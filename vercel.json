@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "pages/api/tweets.js": {
+      "memory": 128,
+      "maxDuration": 5
+    },
+    "pages/api/auth.js": {
+      "memory": 128,
+      "maxDuration": 5
+    }
+  },
+  "cleanUrls": true,
+  "trailingSlash": false
+}
