@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import SpinnerComponent from "../components/Spinner";
 import { getTweets } from "../services/tweets";
 
 export function withTweets(Component) {
@@ -14,7 +15,7 @@ export function withTweets(Component) {
     }, [session]);
 
     if (loading) {
-      return <p>Loading...</p>;
+      return <SpinnerComponent />;
     }
 
     return (
