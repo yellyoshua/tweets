@@ -15,19 +15,19 @@ function ButtonsGrid({fetchTweets}) {
   }, [fetchTweets]);
 
   return (
-    <div className="grid gap-2 grid-cols-2">
+    <div className="grid gap-2 grid-cols-2 select-none">
       <ButtonComponent
         onClick={openNewTweetModal}
         className="bg-purple-500 text-white hover:bg-purple-600 focus:outline-none"
       >
-        New Tweet
+        📝 New Tweet
       </ButtonComponent>
       <ButtonComponent
         disabled={isLoadingTweets}
         onClick={fetchTweets}
         className="bg-blue-500 text-white hover:bg-blue-600 focus:outline-none"
       >
-        Refresh Tweets
+        🔃 Refresh Tweets
       </ButtonComponent>
     </div>
   )

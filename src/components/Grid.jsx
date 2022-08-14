@@ -13,7 +13,7 @@ export default function GridComponent({tweets = [], onEditTweet}) {
   const renderEditTweet = (tweet) => {
     return !tweet.posted && (
       <button
-        className="bg-slate-600 text-white text-base font-medium shadow-sm hover:bg-purple-600 focus:outline-none"
+        className="bg-slate-600 text-white text-base font-medium shadow-sm hover:bg-purple-600 focus:outline-none select-none"
         onClick={() => onEditTweet(tweet)}
       >
         📝
@@ -28,7 +28,7 @@ export default function GridComponent({tweets = [], onEditTweet}) {
 
     return <a
       href={`https://twitter.com/${session.username}/status/${tweet.twitterId}`}
-      className="bg-slate-600 text-white text-base font-medium shadow-sm hover:bg-purple-600 focus:outline-none"
+      className="bg-slate-600 text-white text-base font-medium shadow-sm hover:bg-purple-600 focus:outline-none select-none"
       target="_blank"
       rel="noopener noreferrer"
     >

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "cookies": "^0.8.0",
+    "dayjs": "^1.11.5",
     "next": "12.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",

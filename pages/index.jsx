@@ -8,6 +8,16 @@ import TopBar from '../src/ui/TopBar';
 import TweetModal from '../src/ui/TweetModal';
 import TweetsGrid from '../src/ui/TweetsGrid'
 import styles from '../styles/Home.module.css'
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import 'dayjs/locale/en';
+import CountDownComponent from '../src/components/CountDown';
+dayjs.extend(relativeTime);
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.locale('en');
 
 export default function Home() {
   const session = useSession();
@@ -19,7 +29,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <TopBar />
-      <h3 className='font-mono'>Deploy a tweet about #100-days-of-code each day</h3>
+      <h3 className='font-mono'>Deploy a tweet about each day</h3>
+      <CountDownComponent />
       <main className='my-20 font-mono'>
         <Authentication session={session} login={<LoginComponent />}>
           <ButtonsGrid />
@@ -28,7 +39,7 @@ export default function Home() {
       </main>
       <TweetModal />
 
-      <footer className={styles.footer}>
+      <footer className={`${styles.footer} select-none`}>
         <a
           href="https://yoshualopez.com"
           target="_blank"

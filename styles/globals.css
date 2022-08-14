@@ -28,3 +28,27 @@ a {
     background: black;
   }
 }
+
+/* Custom scroll bar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track:hover {
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d0d0d0;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #969696;
+}

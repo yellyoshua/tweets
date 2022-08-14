@@ -3,8 +3,9 @@ import ModalComponent from "../components/Modal";
 import { postTweet } from '../services/tweets';
 import { sessionStore } from '../store/session.store';
 
-export default function TweetModal({session}) {
+export default function TweetModal({}) {
   const tweetContent = sessionStore(state => state.tweetModal);
+  const session = sessionStore(state => state.session);
 
   const closeModal = useCallback(() => {
     sessionStore.setState({tweetModal: null});
@@ -21,11 +22,11 @@ export default function TweetModal({session}) {
   }, []);
 
   const handleSubmit = useCallback(() => {
-    if (!tweetContent?.content) {
+    if (!tweetContent?.content || !session) {
       return closeModal();
     }
 
-    postTweet(session, tweetContent.content, tweetContent._id)
+    postTweet(session?._id, tweetContent.content, tweetContent._id)
     .finally(() => {
       closeModal();
     });
@@ -42,8 +43,15 @@ export default function TweetModal({session}) {
   >
     <div className="">
       <textarea
-        className="w-full h-32 px-4 py-2 bg-slate-700 border text-blue-200 placeholder-blue-400 border-blue-200 rounded-md shadow-sm focus:outline-none"
+        spellCheck="false"
+        className={`
+          w-full h-32 px-4 py-2 bg-slate-800 border
+          placeholder-blue-200 placeholder-opacity-25 text-blue-200
+          border-blue-200 shadow-sm focus:outline-none
+        `}
+        style={{minHeight: '225px'}}
         placeholder="Enter your tweet content"
+        maxLength={280}
         value={tweetContent.content}
         onChange={({target: {value}}) => setTweetContent(value)}
       />
