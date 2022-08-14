@@ -1,8 +1,8 @@
 import { safeJsonParse, safeLowercase } from '../../src/utils';
 
-const allowed_methods = ['post'];
+const allowed_methods = ['get'];
 export default async function handler(req, res) {
-	const {API_URL, API_KEY}  = process.env || {};
+	const {API_URL}  = process.env || {};
 	const method = safeLowercase(req.method);
 
 	if (!allowed_methods.includes(method)) {
@@ -12,15 +12,5 @@ export default async function handler(req, res) {
 		})
 	}
 
-	const response = await fetch(API_URL + '/twitter/authorization', {
-		method: 'POST',
-		body: JSON.stringify(req.body || {}),
-		headers: {
-			'Content-Type': 'application/json',
-			'authorization': API_KEY,
-		}
-	});
-
-	const data = await response.text();
-	res.status(200).json(safeJsonParse(data));
+  return res.redirect(`${API_URL}/twitter-authorization`);
 }

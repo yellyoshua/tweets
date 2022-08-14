@@ -13,10 +13,7 @@ export async function postTweet(session, tweet = {}) {
       session,
       content: tweet,
     }),
-    headers: {
-      'Content-Type': 'application/json',
-      'authorization': API_KEY,
-    },
+    headers: {'Content-Type': 'application/json'},
   })
   const data = await response.text();
   return safeJsonParse(data, {}).response || [];

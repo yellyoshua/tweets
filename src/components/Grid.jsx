@@ -1,6 +1,12 @@
 export default function GridComponent({tweets = []}) {
   const orderedTweets = Array.from(tweets).reverse();
 
+  if (!orderedTweets.length) {
+    return <div className="flex justify-center items-center mt-14">
+      <p className="text-gray-500">No tweets to display</p>
+    </div>;
+  }
+
   return (
     <div className="max-w-3xl mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-start gap-3">
