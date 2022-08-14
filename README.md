@@ -1,11 +1,14 @@
-This is tweet bot that post tweet every day.
+# Tweets Deploy - Twitter cron job bot
 
-## Getting Started
+This is tweet bot that post a tweet every day.
 
-First, run the development server:
+## Technologies used
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- [🤖] GitHub Actions (CI/CD)
+- [💻] Javascript Nextjs (React)
+- [📦] Vercel (Deployment)
+- [🌐] Cloudflare Workers (Serverless)
+- [✅] Cloudflare Domain (DNS)
+- [🔒] Cloudflare SSL (SSL)
+- [🔗] Twitter API (API)
+- [🔃] MongoDB (Database)
