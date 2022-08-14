@@ -29,7 +29,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <TopBar />
-      <h3 className='font-mono'>Deploy a tweet about each day</h3>
+      <h3 className='font-mono'>Deploy a tweet each day</h3>
       <CountDownComponent />
       <main className='my-20 font-mono'>
         <Authentication session={session} login={<LoginComponent />}>
