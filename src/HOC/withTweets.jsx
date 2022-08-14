@@ -1,17 +1,21 @@
 import { useCallback, useEffect, useState } from "react";
 import SpinnerComponent from "../components/Spinner";
 import { getTweets } from "../services/tweets";
+import { sessionStore } from "../store/session.store";
 
 export function withTweets(Component) {
-  return function WrappedComponent({session, ...props}) {
-    const [tweets, setTweets] = useState([]);
+  return function WrappedComponent({...props}) {
+    const session = sessionStore(state => state.session);
     const [loading, setLoading] = useState(true);
 
     const fetchTweets = useCallback(() => {
-      setLoading(true);
-      getTweets(session)
-        .then(setTweets)
+      if (session) {
+        setLoading(true);
+        getTweets(session._id)
+        .then((tweets) => sessionStore.setState({tweets}))
+        .catch(() => sessionStore.setState({tweets: []}))
         .finally(() => setLoading(false));
+      }
     }, [setLoading, session]);
 
     useEffect(() => {
@@ -23,7 +27,7 @@ export function withTweets(Component) {
     }
 
     return (
-      <Component {...props} tweets={tweets} fetchTweets={fetchTweets} />
+      <Component {...props} fetchTweets={fetchTweets} />
     );
   };
 }

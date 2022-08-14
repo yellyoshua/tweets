@@ -2,7 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import LoginComponent from '../src/components/Login';
 import { useSession } from '../src/hooks';
+import Authentication from '../src/ui/Authentication';
 import NewTweetModal from '../src/ui/NewTweetModal';
+import TopBar from '../src/ui/TopBar';
 import TweetsGrid from '../src/ui/TweetsGrid'
 import styles from '../styles/Home.module.css'
 
@@ -15,18 +17,13 @@ export default function Home() {
         <meta name="description" content="Deploy a tweet each day" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className='text-lg font-bold font-mono'>Tweets Deploy</h1>
+      <TopBar />
       <h3 className='font-mono'>Deploy a tweet about #100-days-of-code each day</h3>
       <main className='my-20 font-mono'>
-      {session
-        ? (
-          <>
-            <NewTweetModal session={session} />
-            <TweetsGrid session={session} />
-          </>
-        )
-        : <LoginComponent />
-      }
+        <Authentication session={session} login={<LoginComponent />}>
+          <NewTweetModal session={session} />
+          <TweetsGrid session={session} />
+        </Authentication>
       </main>
 
       <footer className={styles.footer}>

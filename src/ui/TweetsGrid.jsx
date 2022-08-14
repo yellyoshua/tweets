@@ -1,7 +1,10 @@
 import GridComponent from '../components/Grid';
 import {withTweets} from '../HOC/withTweets';
+import { sessionStore } from '../store/session.store';
 
-function TweetsGrid({tweets = [], fetchTweets}) {
+function TweetsGrid({fetchTweets}) {
+  const tweets = sessionStore(state => state.tweets);
+
   return <div>
     <div className='flex justify-center items-center mb-4'>
       <button
