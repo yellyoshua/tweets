@@ -1,30 +1,20 @@
-import { useCallback, useEffect, useState } from "react";
-import SpinnerComponent from "../components/Spinner";
+import { useCallback } from "react";
 import { getTweets } from "../services/tweets";
 import { sessionStore } from "../store/session.store";
 
 export function withTweets(Component) {
   return function WrappedComponent({...props}) {
     const session = sessionStore(state => state.session);
-    const [loading, setLoading] = useState(true);
 
     const fetchTweets = useCallback(() => {
       if (session) {
-        setLoading(true);
+        sessionStore.setState({isLoadingTweets: true});
         getTweets(session._id)
         .then((tweets) => sessionStore.setState({tweets}))
         .catch(() => sessionStore.setState({tweets: []}))
-        .finally(() => setLoading(false));
+        .finally(() => sessionStore.setState({isLoadingTweets: false}));
       }
-    }, [setLoading, session]);
-
-    useEffect(() => {
-      fetchTweets();
-    }, [fetchTweets]);
-
-    if (loading) {
-      return <SpinnerComponent />;
-    }
+    }, [session]);
 
     return (
       <Component {...props} fetchTweets={fetchTweets} />

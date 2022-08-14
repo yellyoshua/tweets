@@ -6,12 +6,13 @@ export async function getTweets(session) {
   return safeJsonParse(data, {}).response || [];
 }
 
-export async function postTweet(session, tweet = {}) {
+export async function postTweet(session, content, _id = null) {
   const response = await fetch('/api/tweets', {
     method: 'POST',
     body: JSON.stringify({
       session,
-      content: tweet,
+      content,
+      _id,
     }),
     headers: {'Content-Type': 'application/json'},
   })

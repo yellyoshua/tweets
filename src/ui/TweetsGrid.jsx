@@ -1,21 +1,23 @@
+import { useCallback } from 'react';
 import GridComponent from '../components/Grid';
-import {withTweets} from '../HOC/withTweets';
+import SpinnerComponent from '../components/Spinner';
 import { sessionStore } from '../store/session.store';
 
-function TweetsGrid({fetchTweets}) {
+export default function TweetsGrid() {
   const tweets = sessionStore(state => state.tweets);
+  const isLoadingTweets = sessionStore(state => state.isLoadingTweets);
 
-  return <div>
-    <div className='flex justify-center items-center mb-4'>
-      <button
-        className="bg-blue-500 text-white text-base font-medium rounded-md px-3 py-2 shadow-sm hover:bg-blue-600 focus:outline-none"
-        onClick={fetchTweets}
-      >
-        Refresh tweets
-      </button>
-    </div>
-    <GridComponent tweets={tweets} />
+  const editTweetModal = useCallback((tweet) => {
+    sessionStore.setState({tweetModal: tweet});
+  }, []);
+
+  if (isLoadingTweets) {
+    return <div className='mt-10'>
+      <SpinnerComponent />
+    </div>;
+  }
+
+  return <div className='mt-10'>
+    <GridComponent tweets={tweets} onEditTweet={editTweetModal} />
   </div>
 }
-
-export default withTweets(TweetsGrid);
