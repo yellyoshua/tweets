@@ -43,7 +43,7 @@ export default function NewTweetModal({session}) {
       >
         <div className="">
           <textarea
-            className="w-full h-32 px-4 py-2 bg-blue-100 border text-blue-700 placeholder-blue-400 border-blue-200 rounded-md shadow-sm focus:outline-none"
+            className="w-full h-32 px-4 py-2 bg-slate-700 border text-blue-200 placeholder-blue-400 border-blue-200 rounded-md shadow-sm focus:outline-none"
             placeholder="Enter your tweet content"
             value={tweet}
             onChange={({target: {value}}) => setTweet(value)}
