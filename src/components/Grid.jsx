@@ -38,8 +38,8 @@ export default function GridComponent({tweets = [], onEditTweet}) {
 
   const renderTweetContent = (tweet) => {
     return tweet.posted
-      ? <p className="text-sm line-through">{tweet.content}</p>
-      : <p className="text-sm">{tweet.content}</p>
+      ? <p className="text-sm line-through break-words">{tweet.content}</p>
+      : <p className="text-sm break-words">{tweet.content}</p>
   }
 
   return (
