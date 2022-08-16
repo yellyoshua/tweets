@@ -6,6 +6,7 @@ import { sessionStore } from '../store/session.store';
 export default function TweetsGrid() {
   const tweets = sessionStore(state => state.tweets);
   const isLoadingTweets = sessionStore(state => state.isLoadingTweets);
+  const orderedTweets = Array.from(tweets).reverse();
 
   const editTweetModal = useCallback((tweet) => {
     sessionStore.setState({tweetModal: tweet});
@@ -18,6 +19,6 @@ export default function TweetsGrid() {
   }
 
   return <div className='mt-10'>
-    <GridComponent tweets={tweets} onEditTweet={editTweetModal} />
+    <GridComponent tweets={orderedTweets} onEditTweet={editTweetModal} />
   </div>
 }

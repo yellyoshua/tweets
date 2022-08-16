@@ -1,9 +1,10 @@
 import { useCallback } from 'react';
 import ModalComponent from "../components/Modal";
+import { withTweets } from '../HOC/withTweets';
 import { postTweet } from '../services/tweets';
 import { sessionStore } from '../store/session.store';
 
-export default function TweetModal({}) {
+function TweetModal({fetchTweets}) {
   const tweetContent = sessionStore(state => state.tweetModal);
   const session = sessionStore(state => state.session);
 
@@ -28,8 +29,11 @@ export default function TweetModal({}) {
 
     postTweet(session?._id, tweetContent.content, tweetContent._id)
     .finally(() => {
+      fetchTweets();
       closeModal();
     });
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session, tweetContent, closeModal]);
 
   if (!tweetContent) {
@@ -58,3 +62,5 @@ export default function TweetModal({}) {
     </div>
   </ModalComponent>;
 }
+
+export default withTweets(TweetModal);
