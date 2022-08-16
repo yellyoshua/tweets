@@ -38,13 +38,17 @@ export default function GridComponent({tweets = [], onEditTweet}) {
   }
 
   const renderTweetContent = (tweet) => {
+    const content = String(tweet.content);
+
     return <p
       className={`
         text-sm break-words mt-2
         ${tweet.posted && 'line-through text-green-500'}
       `}
     >
-      {tweet.content}
+      {content.length > 140
+        ? content.substring(0, 140) + '...'
+        : content}
     </p>
   }
 

@@ -12,7 +12,7 @@ export default function ModalComponent({title, onClose, onSubmit, children}) {
     <div className="fixed insert-0 top-0 left-0 bg-gray-900 bg-opacity-75 overflow-y-auto h-full w-full z-10">
       <div className="relative top-20 mx-auto px-1 py-5 border w-80 md:w-96 shadow-lg rounded-md bg-slate-800">
         <div className="mt-3 text-center">
-          <h3  className="text-lg leading-6 font-medium text-white">Create a tweet content</h3>
+          <h3  className="text-lg leading-6 font-medium text-white">{title}</h3>
           <div  className="mt-2 px-1 py-3">
             {children}
           </div>
