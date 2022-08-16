@@ -25,7 +25,14 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Tweets Deploy</title>
-        <meta name="description" content="Deploy a tweet each day" />
+        <meta name="description" content="Application that post a tweet each day" />
+        <meta name="keywords" content="tweet, deploy, deploy tweet" />
+        <meta name="author" content="Yoshua Lopez" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@yellyoshua" />
+        <meta name="twitter:creator" content="@yellyoshua" />
+        <meta name="twitter:title" content="Tweets Deploy" />
+        <meta name="twitter:description" content="Application that post a tweet each day" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <TopBar />
