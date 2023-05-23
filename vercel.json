@@ -2,11 +2,11 @@
   "functions": {
     "pages/api/tweets.js": {
       "memory": 128,
-      "maxDuration": 5
+      "maxDuration": 10
     },
     "pages/api/auth.js": {
       "memory": 128,
-      "maxDuration": 5
+      "maxDuration": 10
     }
   },
   "cleanUrls": true,

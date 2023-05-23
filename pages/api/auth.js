@@ -1,4 +1,4 @@
-import { safeJsonParse, safeLowercase } from '../../src/utils';
+import { safeLowercase } from '../../src/utils';
 
 const allowed_methods = ['get'];
 export default async function handler(req, res) {
